@@ -2,7 +2,8 @@ import { useQuery } from "react-query";
 import { ohlcvInfoFetchData } from "../api";
 import APEXChart from "react-apexcharts";
 import LoadingSpinner from "../common/Loading";
-import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 interface ChartPropsType {
   coinId: string;
@@ -20,6 +21,7 @@ interface ChartInfoType {
 }
 
 function Chart({ coinId }: ChartPropsType) {
+  const isDark = useRecoilValue(isDarkAtom);
   const { isLoading, data: chartInfo } = useQuery<ChartInfoType[]>(
     ["chart", coinId],
     () => ohlcvInfoFetchData(coinId),
@@ -105,7 +107,7 @@ function Chart({ coinId }: ChartPropsType) {
             ]}
             options={{
               theme: {
-                mode: "dark",
+                mode: isDark ? "light" : "dark",
               },
               chart: {
                 type: "candlestick",

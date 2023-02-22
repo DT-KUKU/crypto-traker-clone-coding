@@ -29,7 +29,7 @@ const OverViewContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 10px;
-  color: ${(props) => props.theme.basicColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 const OverviewItem = styled.div`
@@ -54,7 +54,7 @@ const CoinHeader = styled(Header)`
 
 const Description = styled.p`
   margin: 10px 0px;
-  color: ${(props) => props.theme.basicColor};
+  color: ${(props) => props.theme.textColor};
   font-weight: 300;
   line-height: 1.2;
 `;
@@ -77,7 +77,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   height: 100%;
   border-radius: 10px;
   color: ${(props) =>
-    props.isActive ? props.theme.linkColor : props.theme.basicColor};
+    props.isActive ? props.theme.linkColor : props.theme.textColor};
   a {
     display: block;
   }

@@ -22,8 +22,10 @@ export const Header = styled.header`
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: transparent;
+  border: 1px solid
+    ${(props) => (props.theme.textColor === "white" ? "white" : "black")};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -61,27 +63,29 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coins</Title>
+        <button>Mode Button</button>
       </Header>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
         <CoinsList>
-          {coins?.slice(0, 100).map((coin) => (
-            <Coin key={coin.id}>
-              <Link
-                to={{
-                  pathname: `/${coin.id}`,
-                  state: { name: coin.name },
-                }}
-              >
-                <img
-                  alt="coin"
-                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
-                />
-                {coin.name} &rarr;
-              </Link>
-            </Coin>
-          ))}
+          {coins &&
+            coins.slice(0, 100).map((coin) => (
+              <Coin key={coin.id}>
+                <Link
+                  to={{
+                    pathname: `/${coin.id}`,
+                    state: { name: coin.name },
+                  }}
+                >
+                  <img
+                    alt="coin"
+                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  />
+                  {coin.name} &rarr;
+                </Link>
+              </Coin>
+            ))}
         </CoinsList>
       )}
     </Container>
