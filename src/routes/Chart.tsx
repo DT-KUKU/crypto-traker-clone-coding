@@ -19,8 +19,6 @@ interface ChartInfoType {
   volume: string;
 }
 
-const RadioTab = styled.div``;
-
 function Chart({ coinId }: ChartPropsType) {
   const { isLoading, data: chartInfo } = useQuery<ChartInfoType[]>(
     ["chart", coinId],
@@ -36,11 +34,7 @@ function Chart({ coinId }: ChartPropsType) {
         <LoadingSpinner />
       ) : (
         <>
-          <RadioTab>
-            <input type="radio" value="Line" />
-            <input type="radio" value="candlestick" />
-          </RadioTab>
-          <APEXChart
+          {/* <APEXChart
             type="line"
             series={[
               {
@@ -92,19 +86,21 @@ function Chart({ coinId }: ChartPropsType) {
                 width: 5,
               },
             }}
-          />
+          /> */}
           <APEXChart
             type="candlestick"
             series={[
               {
                 name: "Price",
                 data:
-                  chartInfo?.map((el) => {
-                    return {
-                      x: new Date(el.time_close),
-                      y: [el.open, el.high, el.low, el.close],
-                    };
-                  }) ?? [],
+                  (chartInfo &&
+                    chartInfo.map((el) => {
+                      return {
+                        x: new Date(el.time_close),
+                        y: [el.open, el.high, el.low, el.close],
+                      };
+                    })) ??
+                  [],
               },
             ]}
             options={{
