@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { useSetRecoilState } from 'recoil';
 import styled from "styled-components";
 import { coinFetchData } from "../api";
+import { isDarkAtom } from '../atoms';
 import LoadingSpinner from "../common/Loading";
 import { CoinInformation } from "../interfaceModule";
 
@@ -56,6 +58,7 @@ function Coins() {
     "allCoinData",
     coinFetchData
   );
+  const mode = useSetRecoilState(isDarkAtom);
   return (
     <Container>
       <Helmet>
@@ -63,7 +66,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coins</Title>
-        <button>Mode Button</button>
+        <button onClick={() => mode(prev => !prev)} >Mode Button</button>
       </Header>
       {isLoading ? (
         <LoadingSpinner />
