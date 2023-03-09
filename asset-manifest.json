@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/crypto-traker-clone-coding/static/js/main.e85d84f0.js",
+    "main.js": "/crypto-traker-clone-coding/static/js/main.04d165bf.js",
     "static/media/sun.png": "/crypto-traker-clone-coding/static/media/sun.6d48da504f4816188c8d.png",
     "static/media/moon.png": "/crypto-traker-clone-coding/static/media/moon.1de6230a4b32cc3899f6.png",
     "index.html": "/crypto-traker-clone-coding/index.html",
-    "main.e85d84f0.js.map": "/crypto-traker-clone-coding/static/js/main.e85d84f0.js.map"
+    "main.04d165bf.js.map": "/crypto-traker-clone-coding/static/js/main.04d165bf.js.map"
   },
   "entrypoints": [
-    "static/js/main.e85d84f0.js"
+    "static/js/main.04d165bf.js"
   ]
 }
